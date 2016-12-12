@@ -4,7 +4,7 @@ PATH_SRC = src
 PATH_BUILD = build
 
 # commands
-COMPILE := g++ -Wall
+COMPILE = g++ -Wall
 
 # files
 SOURCES = $(wildcard $(PATH_SRC)/*.cpp)
@@ -59,3 +59,18 @@ rebuild: clean build
 
 .PHONY: rebuildrun
 rebuildrun: clean build run
+
+# == HELP ==
+
+.PHONY: help
+help:
+	@echo "Format: make [option]"
+	@echo ""
+	@echo "Options:"
+	@echo "  build        Build (default)"
+	@echo "  run          Build and run"
+	@echo "  clean        Clean"
+	@echo "  rebuild      Clean and build"
+	@echo "  rebuildrun   Clean, build and run"
+	@echo "  help         Help"
+	@echo ""
