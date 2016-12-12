@@ -1,7 +1,10 @@
 #include "shell.h"
 
-#include <cstring>
+#include "defs.h"
 
+#include <iostream>
+#include <cstring>
+#include <cstdio>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <signal.h>
@@ -11,6 +14,17 @@
 Shell::Shell() {
 	this->path = getcwd(NULL, PATH_MAX+1); // get path
 	this->child_pid = 0; // no child
+	
+	// Handle SIGCHLD by calling cleanZombies.
+	struct sigaction sigchld_action;
+	memset(&sigchld_action, 0, sizeof(sigchld_action));
+	sigchld_action.sa_handler = &cleanZombie;
+	sigaction (SIGCHLD, &sigchld_action, NULL);
+}
+
+void Shell::cleanZombie(int signal_number) {
+	int status;
+	wait(&status);
 }
 
 bool Shell::setPath(const char* path) {
@@ -43,16 +57,20 @@ bool Shell::startAsync(const char* program, char* const arguments[]) {
 
 bool Shell::start(const char* program, char* const arguments[], const bool async) {
 	
-	// TODO MAYBE convert arguments 
+	// TODO MAYBE convert arguments
 	
 	// fork
 	pid_t child_pid = fork();
 	
 	if (child_pid == 0) {
-		// child
+		// child process
 		
 		// execvp: v = null terminated arguments, p = search in path
 		execvp(program, arguments);
+		
+		// Flow comes here only on error
+		std::cout << MES_COMMAND_NOT_FOUND_1 << program << MES_COMMAND_NOT_FOUND_2 << std::endl;
+		_exit(0);
 		
 	}
 	else {
@@ -61,18 +79,14 @@ bool Shell::start(const char* program, char* const arguments[], const bool async
 		if (!async) {
 			this->child_pid = child_pid;
 			
-			int status_code;
-			waitpid(child_pid, &status_code, 0);
+			int status;
+			waitpid(child_pid, &status, 0);
 			
 			this->child_pid = 0; // child no longer alive
 			
-			if (!WIFEXITED(status_code)) {
+			if (!WIFEXITED(status)) {
 				return false;
 			}
-		}
-		else {
-			
-			// TODO handle zombies
 		}
 	}
 	
@@ -80,7 +94,7 @@ bool Shell::start(const char* program, char* const arguments[], const bool async
 }
 
 bool Shell::stopLast() {
-	
+		
 	if(this->child_pid == 0) {
 		// no child running
 		return false;

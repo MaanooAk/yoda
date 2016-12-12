@@ -27,4 +27,5 @@ private:
 
 	bool start(const char* program, char* const arguments[], const bool async);
 
+	static void cleanZombie(int signal_number);
 };
