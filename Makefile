@@ -4,7 +4,7 @@ PATH_SRC = src
 PATH_BUILD = build
 
 # commands
-COMPILE = g++ -Wall
+COMPILE = g++ -Wall -std=c++11
 
 # files
 SOURCES = $(wildcard $(PATH_SRC)/*.cpp)
@@ -16,10 +16,13 @@ COL = \033[m
 COL_A = \033[1;34m
 COL_B = \033[1;37m
 
+.PHONY: default
+default: build
+
 # == BUILD ==
 
 .PHONY: build
-build: $(PATH_BUILD)/ $(APP)
+build: clean $(PATH_BUILD)/ $(APP)
 	@echo "$(COL_B)- Builded -$(COL)"
 
 $(PATH_BUILD)/:
@@ -41,6 +44,12 @@ run: build
 	@clear
 	@./$(APP)
 
+# == TEST ==
+
+.PHONY: test
+test: build
+	@./$(APP) test
+
 # == CLEAN ==
 
 .PHONY: clean
@@ -54,11 +63,8 @@ clean:
 
 # == OTHER ==
 
-.PHONY: rebuild
-rebuild: clean build
-
-.PHONY: rebuildrun
-rebuildrun: clean build run
+.PHONY: all
+all: clean build test run
 
 # == HELP ==
 
@@ -69,8 +75,8 @@ help:
 	@echo "Options:"
 	@echo "  build        Build (default)"
 	@echo "  run          Build and run"
+	@echo "  test         Build and run tests"
 	@echo "  clean        Clean"
-	@echo "  rebuild      Clean and build"
-	@echo "  rebuildrun   Clean, build and run"
+	@echo "  all          Build, run tests and run"
 	@echo "  help         Help"
 	@echo ""
