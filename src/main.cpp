@@ -2,37 +2,18 @@
 #include <iostream>
 
 #include "defs.h"
-
-
-// Temp test functions
-// TODO move to test framework
-void testShell();
-
+#include "test.h"
 
 int main(int argc, char *argv[]) {
 
 	std::cout << APP_NAME << " v" << APP_VERSION << std::endl;
 
-	//testShell();
-}
-
-
-#include "shell.h"
-void testShell() {
+	if (argc == 2 && argv[1][0] == 't') {
+		// perfom all test
+		Tests tests;
+		bool result = tests.perform();
+		return result ? 0 : 1;
+	}
 	
-	Shell *s = new Shell();
-
-	std::cout << s->getPath() << std::endl;
-	std::cout << s->setPath("../..") << std::endl;
-	std::cout << s->getPath() << std::endl;
-
-	char s1[] = "ls";
-	char s2[] = "-l";
-	char* const args[] = {s1, s2, 0};
-
-	std::cout << s->startSync(s1, args) << std::endl;
-	std::cout << s->startSync(s1, args) << std::endl;
-
-	std::cin >> s1;
-	
+	// TODO(evaperon) start console here
 }
