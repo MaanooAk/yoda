@@ -7,7 +7,7 @@
  * Starts synchronized and asynchronized processes and manipulates the working directory.
  * Keeps track of the last started process.
  *
- * Only one instance of the Shell should be created.
+ * Only one instance of the Shell should be active at any time.
  *
  * Used by the Handler.
  */
@@ -18,6 +18,11 @@ public:
 	 * Constructs and initializes the shell and registers a SIGCHLD signal handler.
 	 */
 	Shell();
+
+	/**
+	 * Deconstructs the shell and unregisters the SIGCHLD signal handler.
+	 */
+	virtual ~Shell();
 
 	/**
 	 * Set the working directory path.

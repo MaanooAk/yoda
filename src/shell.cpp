@@ -16,10 +16,20 @@ Shell::Shell() {
 	this->child_pid = 0; // no child
 
 	// Handle SIGCHLD by calling cleanZombies.
-	struct sigaction sigchld_action;
-	memset(&sigchld_action, 0, sizeof(sigchld_action));
-	sigchld_action.sa_handler = &cleanZombie;
-	sigaction(SIGCHLD, &sigchld_action, NULL);
+	struct sigaction act;
+	sigemptyset(&act.sa_mask);
+	act.sa_handler = &cleanZombie;
+	sigaction(SIGCHLD, &act, NULL);
+}
+
+Shell::~Shell() {
+	delete this->path;
+
+	// Revert SIGCHLD back to default
+	struct sigaction act;
+	sigemptyset(&act.sa_mask);
+	act.sa_handler = SIG_DFL;
+	sigaction(SIGCHLD, &act, NULL);
 }
 
 void Shell::cleanZombie(int signal_number) {
@@ -95,7 +105,7 @@ bool Shell::start(const char* program, char* const arguments[], const bool async
 
 bool Shell::stopLast() {
 
-	if(this->child_pid == 0) {
+	if (this->child_pid == 0) {
 		// no child running
 		return false;
 	}
