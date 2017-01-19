@@ -41,14 +41,14 @@ public:
 	 *
 	 * Arguments is a null terminated char* array including program.
 	 */
-	bool startSync(const char* program, const char* const arguments[]);
+	bool startSync(const char* program, char* const arguments[]);
 
 	/**
 	 * Start an asynchronized process.
 	 *
 	 * Arguments is a null terminated char* array including program.
 	 */
-	bool startAsync(const char* program, const char* const arguments[]);
+	bool startAsync(const char* program, char* const arguments[]);
 
 	/**
 	 * Terminates the last program started with startSync()
@@ -60,7 +60,7 @@ protected:
 	char* path;
 	pid_t child_pid;
 
-	bool start(const char* program, const char* const arguments[], const bool async);
+	bool start(const char* program, char* const arguments[], const bool async);
 
 private:
 

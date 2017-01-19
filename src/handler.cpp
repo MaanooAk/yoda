@@ -13,7 +13,7 @@ Handler::Handler(Shell *sh) {
 
 bool Handler::execute(const Command &c) {
 	const char* comm = c.getCommand();
-	const char* const* args = c.getArgs();
+	char* const* args = c.getArgs();
 	
 	if (strcmp(c.getCommand(), "cd") == 0) {
 		cd(c.getLast());
