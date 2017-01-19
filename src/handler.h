@@ -1,4 +1,6 @@
 #pragma once
+#include "shell.h"
+#include "defs.h"
 
 class Handler {
 public:
