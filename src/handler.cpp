@@ -1,6 +1,4 @@
 #include "handler.h"
-#include "defs.h"
-
 
 Handler::Handler(Shell *sh) {
 	this.sh = sh;
