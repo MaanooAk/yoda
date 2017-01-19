@@ -26,8 +26,8 @@ private:
 	* returns a char** alpharithmetic 
 	*/
 	
-	//should this char** be static or not?
-	char** readLine();
+	//should this char* be static or not?
+	char* readLine(char* empty_string);
 	
 	/**
 	**************CORRECT ME IF STH IS WRONG**********************
