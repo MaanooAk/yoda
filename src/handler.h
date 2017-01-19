@@ -6,7 +6,7 @@ public:
 	/**
  	 * Constructor
  	 */
-	Handler(Shell sh);
+	Handler(Shell *sh);
 	
 	/**
 	 * Executes a command.
