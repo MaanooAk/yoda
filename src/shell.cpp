@@ -55,17 +55,17 @@ const char* Shell::getPath() const {
 	return this->path;
 }
 
-bool Shell::startSync(const char* program, char* const arguments[]) {
+bool Shell::startSync(const char* program, const char* const arguments[]) {
 
 	return start(program, arguments, false);
 }
 
-bool Shell::startAsync(const char* program, char* const arguments[]) {
+bool Shell::startAsync(const char* program, const char* const arguments[]) {
 
 	return start(program, arguments, true);
 }
 
-bool Shell::start(const char* program, char* const arguments[], const bool async) {
+bool Shell::start(const char* program, const char* const arguments[], const bool async) {
 
 	// TODO MAYBE convert arguments
 

@@ -1,14 +1,19 @@
 #include "handler.h"
 
+#include <cstring>
+#include <iostream>
+
+#include "defs.h"
+
+
 Handler::Handler(Shell *sh) {
-	this.sh = sh;
+	this->sh = sh;
 }
 
 
-bool Handler::execute(Command c) {
-	const char* args[] = new const char*[];
+bool Handler::execute(const Command &c) {
 	const char* comm = c.getCommand();
-	args = c.getArgs();
+	const char* const* args = c.getArgs();
 	
 	if (strcmp(c.getCommand(), "cd") == 0) {
 		cd(c.getLast());
@@ -28,10 +33,14 @@ bool Handler::execute(Command c) {
 	}
 	
 	if (strcmp(c.getLast(), "&") == 0) {
+
+		// TODO(jimboelessar) create a copy of the array and the remove the last
+
 		//get to the last argument (the '&') to remove it
-		for(int i = 0; strcmp(args[i], "\0") != 0; i++)
-   		;
-  		args[--i] = '\0';
+		int i;
+		for(i = 0; strcmp(args[i], "\0") != 0; i++)
+		;
+		args[--i] = '\0';
 		
 		sh->startAsync(comm, args);
 		return true;
@@ -48,17 +57,15 @@ bool Handler::cd(const char* path) {
 
 void Handler::pwd() {
 	const char* path = sh->getPath();
-	cout<<endl;
-	cout<<path<<endl;
+	std::cout << path << std::endl;
 }
 
 void Handler::exitYoda() {
-	exit();
+	// TODO(jimboelessar) tell console that it needs to exit
 }
 
 void Handler::help() {
-	cout<<endl;
-	cout<<APP_NAME<<", "<<APP_VERSION<<endl;
-	cout<<"This shell was made for a school project on the Operating Systems course."<<endl;
-	cout<<"It was made by the students Akritidis Akritas, Danis Dimitrios, Perontsi Eva and Sarlidou Anastasia."<<endl;
+	std::cout << APP_NAME << " v" << APP_VERSION << std::endl;
+	std::cout << "This shell was made for a school project on the Operating Systems course." << std::endl;
+	std::cout << "It was made by the students Akritidis Akritas, Danis Dimitrios, Perontsi Eva and Sarlidou Anastasia." << std::endl;
 }

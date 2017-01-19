@@ -1,6 +1,8 @@
 #pragma once
+
 #include "shell.h"
-#include "defs.h"
+#include "command.h"
+
 
 class Handler {
 public:
@@ -16,10 +18,10 @@ public:
 	bool execute(const Command &c);
 
 protected:
-
-private:
 	
 	Shell *sh;
+
+private:
 	
 	/*
 	 * Changes the active directory.
