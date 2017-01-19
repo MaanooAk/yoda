@@ -48,7 +48,7 @@ run: build
 
 .PHONY: test
 test: build
-	@./$(APP) test
+	@./$(APP) test || exit 1
 
 # == CLEAN ==
 
