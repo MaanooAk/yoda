@@ -17,7 +17,7 @@ protected:
 
 private:
 	
-	Shell sh;
+	Shell *sh;
 	
 	/*
 	 * Changes the active directory.
