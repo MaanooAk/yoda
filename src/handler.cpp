@@ -57,5 +57,8 @@ void Handler::exitYoda() {
 }
 
 void Handler::help() {
-	
+	cout<<endl;
+	cout<<APP_NAME<<", "<<APP_VERSION<<endl;
+	cout<<"This shell was made for a school project on the Operating Systems course."<<endl;
+	cout<<"It was made by the students Akritidis Akritas, Danis Dimitrios, Perontsi Eva and Sarlidou Anastasia."<<endl;
 }
