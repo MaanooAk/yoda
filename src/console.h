@@ -23,7 +23,7 @@ private:
 	
 	/**
 	* Reads a line of user's input.
-	* returns a char** alpharithmetic 
+	* returns a char* alpharithmetic 
 	*/
 	
 	//should this char* be static or not?
