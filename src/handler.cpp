@@ -2,15 +2,14 @@
 #include "defs.h"
 
 
-Handler(Shell sh) {
+Handler::Handler(Shell *sh) {
 	this.sh = sh;
 }
 
 
-bool execute(Command c) {
-	const char* comm = new const char*;
+bool Handler::execute(Command c) {
 	const char* args[] = new const char*[];
-	comm = c.getCommand();
+	const char* comm = c.getCommand();
 	args = c.getArgs();
 	
 	if (strcmp(c.getCommand(), "cd") == 0) {
@@ -36,29 +35,29 @@ bool execute(Command c) {
    		;
   		args[--i] = '\0';
 		
-		sh.startAsync(comm, args);
+		sh->startAsync(comm, args);
 		return true;
 	}
 	else {
-		sh.startSync(comm, args);
+		sh->startSync(comm, args);
 		return true;
 	}
 }
 
-bool cd(const char* path) {
-	return sh.setPath(path);
+bool Handler::cd(const char* path) {
+	return sh->setPath(path);
 }
 
-void pwd() {
-	const char* path = sh.getPath();
+void Handler::pwd() {
+	const char* path = sh->getPath();
 	cout<<endl;
 	cout<<path<<endl;
 }
 
-void exitYoda() {
+void Handler::exitYoda() {
 	exit();
 }
 
-void help() {
+void Handler::help() {
 	
 }
