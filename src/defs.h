@@ -32,3 +32,5 @@
 #define MES_TEST_TRUE GREEN "Test passed" RESET
 #define MES_TEST_SEMI YELLOW "Test failed (optional)" RESET
 #define MES_TEST_FALSE RED "Test failed" RESET
+
+#define PROMPT ">"
