@@ -34,13 +34,14 @@ bool Handler::execute(const Command &c) {
 	}
 	
 	if (strcmp(c.getLast(), "&") == 0) {
-		int count = 2;
-		//int count = c.getArgCount();
-		char** arguments = new char*[count - 1];
+
+		int count = c.getArgsCount();
+		char** arguments = new char*[count];
 		
-		int i;
-		for (i=0; i < count; i++)
+		for (int i = 0; i < count; i++) {
 			arguments[i] = args[i];
+		}
+		arguments[count] = nullptr;
 		
 		sh->startAsync(comm, arguments);
 		delete[] arguments;

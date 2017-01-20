@@ -30,7 +30,10 @@ public:
 	 * TODO(asarlidou) write
 	 */
 	const char* getLast() const;
-	
+
+	/**
+	 * TODO(asarlidou) write
+	 */
 	int getArgsCount() const;
 
 protected:
@@ -43,7 +46,7 @@ protected:
 	/**
 	 * The array of arguments
 	 */
-	char* argv[];
+	char** argv;
 
 private:
 
