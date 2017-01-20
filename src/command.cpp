@@ -47,7 +47,7 @@ Command::Command(const char* text) {
 	this->argc = iarray;
 	this->argv = new char*[this->argc + 1];
 
-	for(i = 0; i <= this->argc; i++) {
+	for (i = 0; i <= this->argc; i++) {
 		this->argv[i] = array[i];
 	}
 
@@ -55,24 +55,24 @@ Command::Command(const char* text) {
 
 Command::~Command() {
 	// delete the args
-	for (int i = 0; i < argc; i++) {
-		delete[] argv[i];
+	for (int i = 0; i < this->argc; i++) {
+		delete[] this->argv[i];
 	}
-	delete[] argv;
+	delete[] this->argv;
 }
 
 char* const* Command::getArgs() const {
-	return argv;
+	return this->argv;
 }
 
 const char* Command::getCommand() const {
-	return argv[0];
+	return this->argv[0];
 }
 
 const char* Command::getLast() const {
-	return argv[argc - 1];
+	return this->argv[this->argc - 1];
 }
 
 int Command::getArgsCount() const {
-	return argc;
+	return this->argc;
 }

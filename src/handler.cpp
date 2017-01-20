@@ -8,14 +8,14 @@
 
 Handler::Handler(Shell *sh) {
 	this->sh = sh;
-	terminated = false;
+	this->terminated = false;
 }
 
 
 bool Handler::execute(const Command &c) {
 	const char* comm = c.getCommand();
 	char* const* args = c.getArgs();
-	
+
 	if (strcmp(c.getCommand(), "cd") == 0) {
 		cd(c.getLast());
 		return true;
@@ -32,44 +32,44 @@ bool Handler::execute(const Command &c) {
 		help();
 		return true;
 	}
-	
+
 	if (strcmp(c.getLast(), "&") == 0) {
 
 		int count = c.getArgsCount();
 		char** arguments = new char*[count];
-		
-		for (int i = 0; i < count; i++) {
+
+		for (int i = 0; i < count - 1; i++) {
 			arguments[i] = args[i];
 		}
-		arguments[count] = nullptr;
-		
-		sh->startAsync(comm, arguments);
+		arguments[count - 1] = nullptr;
+
+		this->sh->startAsync(comm, arguments);
 		delete[] arguments;
 		return true;
 	}
 	else {
-		sh->startSync(comm, args);
+		this->sh->startSync(comm, args);
 		return true;
 	}
 }
 
+bool Handler::isTerminated() {
+	return this->terminated;
+}
+
 bool Handler::cd(const char* path) {
-	return sh->setPath(path);
+	return this->sh->setPath(path);
 }
 
 void Handler::pwd() {
-	const char* path = sh->getPath();
+	const char* path = this->sh->getPath();
 	std::cout << path << std::endl;
 }
 
 void Handler::exitYoda() {
-	terminated = true;
+	this->terminated = true;
 }
 
 void Handler::help() {
 	std::cout << APP_NAME << " v" << APP_VERSION << std::endl;
-}
-
-bool Handler::isTerminated() {
-	return terminated;
 }
