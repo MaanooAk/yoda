@@ -1,12 +1,14 @@
 #include "test.h"
 
 #include <iostream>
-#include <cstring>
 #include <limits.h>
 #include <unistd.h>
+#include <cstring>
 
 #include "defs.h"
 #include "shell.h"
+#include "command.h"
+#include "string.h"
 
 const char *cwd = getcwd(NULL, PATH_MAX+1);
 
@@ -41,26 +43,6 @@ bool Tests::perform() {
 	return result;
 }
 
-// === Sub functions ===
-
-static bool compare(const char* s1, const char* s2) {
-	unsigned int i1 = 0, i2 = 0;
-	while (s1[i1] != '\0' && s1[i1] == s2[i2]) {
-		i1++;
-		i2++;
-	}
-	return s1[i1] == s2[i2];
-}
-
-static bool compare(const char* const* s1, const char* const* s2) {
-	unsigned int i1 = 0, i2 = 0;
-	while (s1[i1] != nullptr && compare(s1[i1], s2[i2])) {
-		i1++;
-		i2++;
-	}
-	return s1[i1] == s2[i2];
-}
-
 // === Tests ===
 
 const void* TestShell01::execute() {
@@ -73,7 +55,7 @@ bool TestShell01::assert(const void* result) {
 	strcpy(path, cwd);
 	strcat(path, "");
 
-	bool a = !strcmp((const char*)result, path);
+	bool a = String::compare((const char*)result, path);
 
 	if (!a) {
 		std::cout << "  Found " << (const char*)result << " instead of " << path << std::endl;
@@ -94,7 +76,7 @@ bool TestShell02::assert(const void* result) {
 	strcpy(path, cwd);
 	strcat(path, "/src");
 
-	bool a = !strcmp((const char*)result, path);
+	bool a = String::compare((const char*)result, path);
 
 	if (!a) {
 		std::cout << "  Found " << (const char*)result << " instead of " << path << std::endl;
@@ -124,7 +106,7 @@ bool TestShell03::assert(const void* result) {
 
 const void* TestCommand01::execute() {
 	char line[] = "ls build -a";
-	return new char(line[0]); // TODO change
+	return new Command(line);
 }
 
 bool TestCommand01::assert(const void* result) {
@@ -133,13 +115,15 @@ bool TestCommand01::assert(const void* result) {
 	char s3[] = "-a";
 	const char* const args[] = {s1, s2, s3, nullptr};
 
-	bool a = !compare(args, args);
+	bool a = String::compare(args, ((Command*)result)->getArgs());
+
+	delete (Command*)result;
 	return a;
 }
 
 const void* TestCommand02::execute() {
 	char line[] = "ls  build    -a";
-	return new char(line[0]); // TODO change
+	return new Command(line);
 }
 
 bool TestCommand02::assert(const void* result) {
@@ -148,13 +132,15 @@ bool TestCommand02::assert(const void* result) {
 	char s3[] = "-a";
 	const char* const args[] = {s1, s2, s3, nullptr};
 
-	bool a = !compare(args, args);
+	bool a = String::compare(args, ((Command*)result)->getArgs());
+
+	delete (Command*)result;
 	return a;
 }
 
 const void* TestCommand03::execute() {
 	char line[] = "ls \"build all\" -a";
-	return new char(line[0]); // TODO change
+	return new Command(line);
 }
 
 bool TestCommand03::assert(const void* result) {
@@ -163,7 +149,9 @@ bool TestCommand03::assert(const void* result) {
 	char s3[] = "-a";
 	const char* const args[] = {s1, s2, s3, nullptr};
 
-	bool a = !compare(args, args);
+	bool a = String::compare(args, ((Command*)result)->getArgs());
+
+	delete (Command*)result;
 	return a;
 }
 

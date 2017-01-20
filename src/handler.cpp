@@ -40,7 +40,7 @@ bool Handler::execute(const Command &c) {
 		int i;
 		for(i = 0; strcmp(args[i], "\0") != 0; i++)
 		;
-		args[--i] = '\0';
+		//args[--i] = '\0'; // cant compile
 		
 		sh->startAsync(comm, args);
 		return true;
