@@ -14,7 +14,7 @@ public:
 
 	const char* getLast() const;
 	
-	int getArgCount() const;
+	int getArgsCount() const;
 
 protected:
 

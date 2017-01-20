@@ -20,7 +20,7 @@ const char* Command::getLast() const {
 	return nullptr;
 }
 
-int Command::getArgCount() const {
+int Command::getArgsCount() const {
 	// TODO(asarlidou) implement
-	return 10;
+	return argc;
 }
