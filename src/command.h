@@ -2,28 +2,45 @@
 
 
 /**
- * this class gets a string and split into array.
- * TODO(asarlidou) implement
+ * Gets a string and split into array.
+ *
+ * TODO(asarlidou) fix and improve doc
  */
 class Command {
 public:
 
+	/**
+	 * TODO(asarlidou) write
+	 */
 	Command(const char* text);
 
 	virtual ~Command();
-	
+
+	/**
+	 * TODO(asarlidou) write
+	 */
 	char* const* getArgs() const;
 
+	/**
+	 * TODO(asarlidou) write
+	 */
 	const char* getCommand() const;
 
+	/**
+	 * TODO(asarlidou) write
+	 */
 	const char* getLast() const;
 
 protected:
 
-	// all the number of arguments in the array
+	/**
+	 * All the number of arguments in the array
+	 */
 	int argc;
 
-	// an array of arguments
+	/**
+	 * The array of arguments
+	 */
 	char* argv[];
 
 private:
