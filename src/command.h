@@ -30,6 +30,8 @@ public:
 	 * TODO(asarlidou) write
 	 */
 	const char* getLast() const;
+	
+	int getArgsCount() const;
 
 protected:
 

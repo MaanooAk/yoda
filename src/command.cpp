@@ -69,3 +69,7 @@ const char* Command::getCommand() const {
 const char* Command::getLast() const {
 	return argv[argc - 1];
 }
+
+int Command::getArgsCount() const {
+	return argc;
+}
