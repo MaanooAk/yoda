@@ -13,6 +13,8 @@ public:
 	const char* getCommand() const;
 
 	const char* getLast() const;
+	
+	int getArgCount() const;
 
 protected:
 

@@ -19,3 +19,8 @@ const char* Command::getLast() const {
 	// TODO(asarlidou) implement
 	return nullptr;
 }
+
+int Command::getArgCount() const {
+	// TODO(asarlidou) implement
+	return 10;
+}
