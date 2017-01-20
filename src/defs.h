@@ -4,7 +4,7 @@
 #define APP_NAME_LC "yoda"
 #define APP_NAME_UC "YODA"
 
-#define APP_VERSION "0.1"
+#define APP_VERSION "0.2"
 
 
 #define PATH_PREFERENCES "./prefs.ini"

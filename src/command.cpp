@@ -1,7 +1,7 @@
 #include "command.h"
 
 #include "string.h"
-#include <iostream>
+
 
 Command::Command(const char* text) {
 	// buffer variables

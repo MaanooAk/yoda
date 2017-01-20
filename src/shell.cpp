@@ -3,7 +3,6 @@
 #include "defs.h"
 
 #include <iostream>
-#include <cstring>
 #include <cstdio>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -67,8 +66,6 @@ bool Shell::startAsync(const char* program, char* const arguments[]) {
 
 bool Shell::start(const char* program, char* const arguments[], const bool async) {
 
-	// TODO MAYBE convert arguments
-
 	// fork
 	pid_t child_pid = fork();
 
@@ -84,7 +81,7 @@ bool Shell::start(const char* program, char* const arguments[], const bool async
 
 	}
 	else {
-		// parrent
+		// parrent process
 
 		if (!async) {
 			this->child_pid = child_pid;
