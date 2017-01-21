@@ -1,4 +1,6 @@
 #pragma once
+#include "command.h"
+#include "handler.h"
 
 class Console {
 public:
@@ -6,6 +8,11 @@ public:
 	* constructor of the console
 	*/
 	Console();
+	
+	/**
+	* destructor
+	*/
+	~Console();
 	
 	/**
 	* Starts running the console, contains the main loop of the program. When this function exits, the program exits.
@@ -16,24 +23,15 @@ public:
 
 protected:
 	
+	Shell* shell;
+	
+	Handler* handler;
 
 private:
 	
 	//error flags here
+
 	
-	/**
-	* Reads a line of user's input.
-	* returns a char* alpharithmetic 
-	*/
-	
-	//should this char* be static or not?
-	char* readLine(char* empty_string);
-	
-	/**
-	**************CORRECT ME IF STH IS WRONG**********************
-	* readLine's returning string will be the parameter of command's constructor
-	* the command itself will be a parameter in a handler's function
-	*/
 	
 
 };
