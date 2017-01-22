@@ -11,8 +11,10 @@
 
 
 Shell::Shell() {
-	this->path = getcwd(NULL, PATH_MAX+1); // get path
 	this->child_pid = 0; // no child
+
+	this->path = new char[PATH_MAX + 1];
+	getcwd(this->path, PATH_MAX + 1); // get path
 
 	// Handle SIGCHLD by calling cleanZombies.
 	struct sigaction act;
@@ -22,7 +24,7 @@ Shell::Shell() {
 }
 
 Shell::~Shell() {
-	delete this->path;
+	delete[] this->path;
 
 	// Revert SIGCHLD back to default
 	struct sigaction act;
@@ -45,7 +47,7 @@ bool Shell::setPath(const char* path) {
 	}
 
 	// get and store resolved path
-	getcwd(this->path, PATH_MAX+1);
+	getcwd(this->path, PATH_MAX + 1);
 
 	return true;
 }

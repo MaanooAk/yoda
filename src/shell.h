@@ -58,6 +58,7 @@ public:
 protected:
 
 	char* path;
+
 	pid_t child_pid;
 
 	bool start(const char* program, char* const arguments[], const bool async);
