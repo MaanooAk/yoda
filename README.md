@@ -1,5 +1,10 @@
 # yoda
+
 Yoda is an alternative shell for Linux
+
+## Features
+
+- Background processes
 
 ## Development
 
@@ -12,25 +17,6 @@ sudo apt-get install -y make g++
 ```
 
 Suggested text editor: [Notepadqq](http://notepadqq.altervista.org/wp/download/)
-
-### Contribute
-
-First time only: (download repo)
-
-```bash
-git clone https://github.com/MaanooAk/yoda
-cd yoda
-```
-
-Every time you want to commit a change:
-
-```bash
-git pull
-# make changes to files
-git add .
-git commit -m "The commit message"
-git push
-```
 
 ### Build and run
 
