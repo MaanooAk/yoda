@@ -23,6 +23,9 @@ bool Console::start(){
 	
 	while(!handler->isTerminated()){
 		
+		
+		bool exec_OK;
+		
 		const char* cur_path;
 		//getting the current path
 		cur_path=shell->getPath();
@@ -36,6 +39,8 @@ bool Console::start(){
 		//creating new Command object
 		Command* command = new Command(line);
 		
+		//sth wrong with my arg
+		//exec_OK = handler->execute(command);
 		
 		
 	}

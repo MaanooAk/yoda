@@ -3,6 +3,7 @@
 
 #include "defs.h"
 #include "test.h"
+#include "console.h"
 
 int main(int argc, char *argv[]) {
 
@@ -16,7 +17,8 @@ int main(int argc, char *argv[]) {
 	}
 	
 	// TODO(evaperon) start console here
-	
+	Console* console = new Console();
+	console->start();
 	
 	
 }
