@@ -32,3 +32,47 @@ bool String::compare(const char* const* s1, const char* const* s2) {
 	}
 	return s1[i] == s2[i];
 }
+
+char* String::clone(const char* src) {
+	// calc length
+	unsigned int len = 0;
+	while(src[len] != '\0') {
+		len++;
+	}
+	// clone string
+	char *a = new char[len + 1];
+	for (unsigned int i = 0; i <= len; i++) {
+		a[i] = src[i];
+	}
+	return a;
+}
+
+char** String::clone(char* const* src) {
+	// calc length
+	unsigned int len = 0;
+	while(src[len] != nullptr) {
+		len++;
+	}
+	// clone string
+	char **a = new char*[len + 1];
+	for (unsigned int i = 0; i <= len; i++) {
+		a[i] = src[i];
+	}
+	return a;
+}
+
+char** String::cloneLeading(char* const* src) {
+	// calc length
+	unsigned int len = 0;
+	while(src[len] != nullptr) {
+		len++;
+	}
+	len--;
+	// clone string
+	char **a = new char*[len + 1];
+	for (unsigned int i = 0; i < len; i++) {
+		a[i] = src[i];
+	}
+	a[len] = nullptr;
+	return a;
+}

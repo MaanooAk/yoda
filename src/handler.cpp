@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "defs.h"
+#include "string.h"
 
 
 Handler::Handler(Shell *sh) {
@@ -35,16 +36,11 @@ bool Handler::execute(const Command &c) {
 
 	if (strcmp(c.getLast(), "&") == 0) {
 
-		int count = c.getArgsCount();
-		char** arguments = new char*[count];
-
-		for (int i = 0; i < count - 1; i++) {
-			arguments[i] = args[i];
-		}
-		arguments[count - 1] = nullptr;
+		char** arguments = String::cloneLeading(args);
 
 		this->sh->startAsync(comm, arguments);
 		delete[] arguments;
+
 		return true;
 	}
 	else {

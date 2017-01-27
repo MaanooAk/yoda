@@ -25,8 +25,7 @@ Command::Command(const char* text) {
 			buff[ibuff] = '\0';
 			ibuff += 1;
 
-			char* arg = new char[ibuff];
-			String::copy(arg, buff);
+			char* arg = String::clone(buff);
 
 			array[iarray] = arg;
 			iarray += 1;
@@ -46,11 +45,7 @@ Command::Command(const char* text) {
 
 	// set member variables
 	this->argc = iarray;
-	this->argv = new char*[this->argc + 1];
-
-	for (i = 0; i <= this->argc; i++) {
-		this->argv[i] = array[i];
-	}
+	this->argv = String::clone(array);
 
 }
 
@@ -59,7 +54,7 @@ Command::~Command() {
 	for (int i = 0; i < this->argc; i++) {
 		delete[] this->argv[i];
 	}
-	delete[] this->argv;
+	delete this->argv;
 }
 
 char* const* Command::getArgs() const {
