@@ -10,14 +10,22 @@ Command::Command(const char* text) {
 	char* array[LINE_SIZE];
 	// indexes
 	int i = 0, ibuff = 0, iarray = 0;
+	// inside quotes
+	bool inqu = false;
 
 	while (true) {
 
-		if (text[i] != ' ' && text[i] != '\0') {
-			// copy any normal char to buffer
+		if ((text[i] != ' ' || inqu) && text[i] != '\0') {
+			// handle next char
 
-			buff[ibuff] = text[i];
-			ibuff += 1;
+			if (text[i] == '"') {
+				// change inside quotes status
+				inqu = !inqu;
+			} else {
+				// copy any normal char to buffer
+				buff[ibuff] = text[i];
+				ibuff += 1;
+			}
 
 		} else if (ibuff > 0) {
 			// do the split
