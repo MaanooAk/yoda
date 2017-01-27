@@ -89,3 +89,12 @@ public:
 	virtual const void* execute() override;
 	virtual bool assert(const void* result) override;
 };
+
+class TestCommand04 : public Test {
+public:
+	TestCommand04() :
+		Test(false, "Command", "Parse empty line") {}
+
+	virtual const void* execute() override;
+	virtual bool assert(const void* result) override;
+};

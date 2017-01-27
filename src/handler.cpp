@@ -14,6 +14,10 @@ Handler::Handler(Shell *sh) {
 
 
 bool Handler::execute(const Command &c) {
+	if (c.getArgsCount() == 0) {
+		return true;
+	}
+
 	const char* comm = c.getCommand();
 	char* const* args = c.getArgs();
 

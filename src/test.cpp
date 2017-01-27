@@ -30,6 +30,7 @@ Tests::Tests() {
 	this->tests.push_back(new TestCommand01());
 	this->tests.push_back(new TestCommand02());
 	this->tests.push_back(new TestCommand03());
+	this->tests.push_back(new TestCommand04());
 }
 
 bool Tests::perform() {
@@ -150,6 +151,21 @@ bool TestCommand03::assert(const void* result) {
 	const char* const args[] = {s1, s2, s3, nullptr};
 
 	bool a = String::compare(args, ((Command*)result)->getArgs());
+
+	delete (Command*)result;
+	return a;
+}
+
+const void* TestCommand04::execute() {
+	char line[] = "";
+	return new Command(line);
+}
+
+bool TestCommand04::assert(const void* result) {
+	const char* const args[] = {nullptr};
+
+	bool a = String::compare(args, ((Command*)result)->getArgs())
+		&& ((Command*)result)->getArgsCount() == 0;
 
 	delete (Command*)result;
 	return a;
