@@ -11,13 +11,13 @@ class Console {
 public:
 	/**
 	 * constructor of the console
-	 * TODO(evaperon) write
+	 * Creates a shell and a handler object
 	 */
 	Console();
 
 	/**
 	 * destructor
-	 * TODO(evaperon) write
+	 * frees (delete) the allocated memory of the shell and the handler
 	 */
 	virtual ~Console();
 

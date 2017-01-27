@@ -33,10 +33,13 @@ bool Console::start(){
 
 		// creating new Command object
 		// TODO make static?
-		Command* command = new Command(line);
-
-		// sth wrong with my arg
-		handler->execute(*command);
+		//Command* command = new Command(line);		
+		//handler->execute(*command);
+		
+		Command command(line);
+		
+		//have handler object to execute the command
+		handler->execute(command);
 
 	}
 
