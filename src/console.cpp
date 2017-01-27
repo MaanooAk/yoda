@@ -40,7 +40,7 @@ bool Console::start(){
 		Command* command = new Command(line);
 		
 		//sth wrong with my arg
-		//exec_OK = handler->execute(command);
+		exec_OK = handler->execute(*command);
 		
 		
 	}
