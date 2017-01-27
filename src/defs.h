@@ -4,7 +4,7 @@
 #define APP_NAME_LC "yoda"
 #define APP_NAME_UC "YODA"
 
-#define APP_VERSION "0.2"
+#define APP_VERSION "0.3"
 
 
 // File paths
@@ -13,7 +13,7 @@
 
 // Max values
 #define LINE_SIZE 4096
-#define ARGS_SIZE 4096
+#define ARGS_SIZE 1024
 
 
 // Formating special characters

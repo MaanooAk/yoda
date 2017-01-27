@@ -17,9 +17,8 @@ int main(int argc, char *argv[]) {
 		return result ? 0 : 1;
 	}
 
-	// TODO make static ?
-	Console* console = new Console();
-	console->start();
+	Console console;
+	console.start();
 	
-	
+	return 0;
 }

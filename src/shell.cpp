@@ -17,10 +17,11 @@ Shell::Shell() {
 	getcwd(this->path, PATH_MAX + 1); // get path
 
 	// Handle SIGCHLD by calling cleanZombies.
-	struct sigaction act;
-	sigemptyset(&act.sa_mask);
-	act.sa_handler = &cleanZombie;
-	sigaction(SIGCHLD, &act, NULL);
+	//struct sigaction act;
+	//sigemptyset(&act.sa_mask);
+	//act.sa_handler = &cleanZombie;
+	//sigaction(SIGCHLD, &act, NULL);
+	signal(SIGCHLD, cleanZombie);
 }
 
 Shell::~Shell() {
