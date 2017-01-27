@@ -7,9 +7,16 @@
 #define APP_VERSION "0.2"
 
 
+// File paths
 #define PATH_PREFERENCES "./prefs.ini"
 
 
+// Max values
+#define LINE_SIZE 4096
+#define ARGS_SIZE 4096
+
+
+// Formating special characters
 #define RESET       "\033[0m"
 #define BLACK       "\033[30m"
 #define RED         "\033[31m"
@@ -29,14 +36,15 @@
 #define BOLDWHITE   "\033[1m\033[37m"
 
 
+// Messages
 #define MES_COMMAND_NOT_FOUND_1 "No command '"
 #define MES_COMMAND_NOT_FOUND_2 "' found!"
-
 #define MES_TEST_TRUE GREEN "Test passed" RESET
 #define MES_TEST_SEMI YELLOW "Test failed (optional)" RESET
 #define MES_TEST_FALSE RED "Test failed" RESET
 
 
 // TODO move to preferences
-#define PROMPT ">"
+#define PROMPT1 BOLDBLUE
+#define PROMPT2 RESET "> "
 

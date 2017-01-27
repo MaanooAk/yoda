@@ -1,9 +1,10 @@
 #include "console.h"
+
 #include <iostream>
 
 #include "defs.h"
+#include "command.h"
 
-#define LINE_SIZE 512
 
 Console::Console(){
 	
@@ -30,13 +31,14 @@ bool Console::start(){
 		//getting the current path
 		cur_path=shell->getPath();
 		//printing the prompt
-		std::cout<< cur_path << PROMPT ;
+		std::cout << PROMPT1 << cur_path << PROMPT2;
 		
 		//reading the line
 		char line[LINE_SIZE]; 
 		std::cin.getline(line,LINE_SIZE);
 		
 		//creating new Command object
+		// TODO make static?
 		Command* command = new Command(line);
 		
 		//sth wrong with my arg

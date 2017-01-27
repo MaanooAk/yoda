@@ -1,13 +1,13 @@
 #include "shell.h"
 
-#include "defs.h"
-
 #include <iostream>
 #include <cstdio>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <signal.h>
 #include <limits.h>
+
+#include "defs.h"
 
 
 Shell::Shell() {

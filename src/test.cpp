@@ -145,7 +145,7 @@ const void* TestCommand03::execute() {
 
 bool TestCommand03::assert(const void* result) {
 	char s1[] = "ls";
-	char s2[] = "\"build all\""; // TODO remove quotes?
+	char s2[] = "build all";
 	char s3[] = "-a";
 	const char* const args[] = {s1, s2, s3, nullptr};
 

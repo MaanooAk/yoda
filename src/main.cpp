@@ -5,6 +5,7 @@
 #include "test.h"
 #include "console.h"
 
+
 int main(int argc, char *argv[]) {
 
 	std::cout << APP_NAME << " v" << APP_VERSION << std::endl;
@@ -15,8 +16,8 @@ int main(int argc, char *argv[]) {
 		bool result = tests.perform();
 		return result ? 0 : 1;
 	}
-	
-	// TODO(evaperon) start console here
+
+	// TODO make static ?
 	Console* console = new Console();
 	console->start();
 	

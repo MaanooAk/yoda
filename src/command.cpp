@@ -1,12 +1,13 @@
 #include "command.h"
 
+#include "defs.h"
 #include "string.h"
 
 
 Command::Command(const char* text) {
 	// buffer variables
-	char buff[256];
-	char* array[256];
+	char buff[LINE_SIZE];
+	char* array[LINE_SIZE];
 	// indexes
 	int i = 0, ibuff = 0, iarray = 0;
 
