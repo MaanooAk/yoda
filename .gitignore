@@ -1,5 +1,6 @@
 /build
 yoda
+.deps
 prefs.ini
 
 # Github c++ gitignore template

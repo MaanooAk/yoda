@@ -1,6 +1,8 @@
 #include "console.h"
 
 #include <iostream>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #include "defs.h"
 #include "command.h"

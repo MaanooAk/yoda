@@ -22,7 +22,7 @@ default: build
 # == BUILD ==
 
 .PHONY: build
-build: clean $(PATH_BUILD)/ $(APP)
+build: deps clean $(PATH_BUILD)/ $(APP)
 	@echo "$(COL_B)- Builded -$(COL)"
 
 $(PATH_BUILD)/:
@@ -31,7 +31,7 @@ $(PATH_BUILD)/:
 
 $(APP): $(OBJECTS)
 	@echo "Link objects"
-	@$(COMPILE) -o $@ $^
+	@$(COMPILE) -o $@ $^ -lreadline
 
 $(PATH_BUILD)/%.o: $(PATH_SRC)/%.cpp
 	@echo "Compile $(COL_A)$<$(COL)"
@@ -66,6 +66,13 @@ clean:
 .PHONY: all
 all: clean build test run
 
+.PHONY: deps
+deps: .deps
+
+.deps:
+	sudo apt-get install -y g++  libreadline6 libreadline6-dev
+	@echo "v1" > .deps
+
 # == HELP ==
 
 .PHONY: help
@@ -78,5 +85,6 @@ help:
 	@echo "  test         Build and run tests"
 	@echo "  clean        Clean"
 	@echo "  all          Build, run tests and run"
+	@echo "  deps         Install all the dependencies"
 	@echo "  help         Help"
 	@echo ""
