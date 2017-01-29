@@ -29,15 +29,25 @@ bool Console::start(){
 		// printing the prompt
 		std::cout << PROMPT1 << cur_path << PROMPT2;
 
-		// reading the line
-		char line[LINE_SIZE];
-		std::cin.getline(line, LINE_SIZE);
-
-		// creating new Command object
-		// TODO make static?
-		//Command* command = new Command(line);		
-		//handler->execute(*command);
 		
+		char *line=(char*)NULL;
+		
+		/***using GNU readline***/
+		
+		//checking if line is empty and if it is not it frees it and reallocates memory
+		if (line){
+        	delete line;
+      		line = (char *)NULL;
+    	}
+		//getting the line
+  		line = readline ("");
+
+ 		//adding it to history (you can use the arrows to navigate through history)
+ 	    if (line && *line){
+    		add_history (line);
+		}
+		
+		// creating new Command object
 		Command command(line);
 		
 		//have handler object to execute the command
