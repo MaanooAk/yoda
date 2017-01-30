@@ -37,15 +37,17 @@
 
 
 // Messages
-#define MES_COMMAND_NOT_FOUND_1 "No command '"
-#define MES_COMMAND_NOT_FOUND_2 "' found!"
-#define MES_PROGRAM_TERM_1 BOLDYELLOW "[Interrupt]" RESET "Program with PID '"
-#define MES_PROGRAM_TERM_2 "' was terminated."
-#define MES_NO_PROGRAM_IS_RUNNING BOLDYELLOW "[Interrupt]" RESET " No program is running!"
+#define MES_COMMAND_NOT_FOUND_1  "No command '"
+#define MES_COMMAND_NOT_FOUND_2  "' found!"
+#define MES_PROGRAM_TERM_1       BOLDYELLOW "[Interrupt]" RESET "Program with PID '"
+#define MES_PROGRAM_TERM_2       "' was terminated."
+#define MES_PROGRAM_NOTERM       BOLDYELLOW "[Interrupt]" RESET " No program is running!"
 
-#define MES_TEST_TRUE GREEN "Test passed" RESET
-#define MES_TEST_SEMI YELLOW "Test failed (optional)" RESET
-#define MES_TEST_FALSE RED "Test failed" RESET
+
+// Testing messages
+#define MES_TEST_TRUE   GREEN "Test passed" RESET
+#define MES_TEST_SEMI   YELLOW "Test failed (optional)" RESET
+#define MES_TEST_FALSE  RED "Test failed" RESET
 
 
 // TODO move to preferences
