@@ -73,6 +73,13 @@ deps: .deps
 	sudo apt-get install -y g++  libreadline6 libreadline6-dev
 	@echo "v1" > .deps
 
+.PHONY: check
+check:
+	@echo "Find missing spaces"
+	@grep -nrE --color "((if|for|while)\()|(\){)" src/
+	@echo "Find trailling whitespace"
+	@grep -nr --color "[[:blank:]]$$" src/
+
 # == HELP ==
 
 .PHONY: help
@@ -86,5 +93,6 @@ help:
 	@echo "  clean        Clean"
 	@echo "  all          Build, run tests and run"
 	@echo "  deps         Install all the dependencies"
+	@echo "  check        Show code style errors"
 	@echo "  help         Help"
 	@echo ""
