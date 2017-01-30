@@ -76,9 +76,9 @@ deps: .deps
 .PHONY: check
 check:
 	@echo "Find missing spaces"
-	@grep -nrE --color "((if|for|while)\()|(\){)" src/
+	@grep -nrE --color "((if|for|while)\()|(\){)" src/ || true
 	@echo "Find trailling whitespace"
-	@grep -nr --color "[[:blank:]]$$" src/
+	@grep -nr --color "[[:blank:]]$$" src/ || true
 
 # == HELP ==
 

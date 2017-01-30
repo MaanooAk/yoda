@@ -36,7 +36,7 @@ bool String::compare(const char* const* s1, const char* const* s2) {
 char* String::clone(const char* src) {
 	// calc length
 	unsigned int len = 0;
-	while(src[len] != '\0') {
+	while (src[len] != '\0') {
 		len++;
 	}
 	// clone string
@@ -50,7 +50,7 @@ char* String::clone(const char* src) {
 char** String::clone(char* const* src) {
 	// calc length
 	unsigned int len = 0;
-	while(src[len] != nullptr) {
+	while (src[len] != nullptr) {
 		len++;
 	}
 	// clone string
@@ -64,7 +64,7 @@ char** String::clone(char* const* src) {
 char** String::cloneLeading(char* const* src) {
 	// calc length
 	unsigned int len = 0;
-	while(src[len] != nullptr) {
+	while (src[len] != nullptr) {
 		len++;
 	}
 	len--;
