@@ -37,4 +37,6 @@ protected:
 
 private:
 
+	static void stopLast(int signal);
+
 };
