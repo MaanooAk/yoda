@@ -9,6 +9,7 @@
  */
 class Console {
 public:
+
 	/**
 	 * constructor of the console
 	 * Creates a shell and a handler object

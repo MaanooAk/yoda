@@ -109,12 +109,12 @@ pid_t Shell::stopLast() {
 		// no child running
 		return 0;
 	}
-	
+
 	pid_t pid = this->child_pid;
 
 	kill(this->child_pid, SIGTERM);
 
 	this->child_pid = 0;
-	
+
 	return pid;
 }

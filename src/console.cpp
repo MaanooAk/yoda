@@ -9,36 +9,46 @@
 #include "defs.h"
 #include "command.h"
 
-Console::Console(){
+// used from the SIGINT handler
+static Console* instance;
+
+Console::Console() {
 
 	shell = new Shell();
 	handler = new Handler(shell);
 
+	instance = this;
 	signal(SIGINT, stopLast);
 }
 
-Console::~Console(){
+Console::~Console() {
 
 	delete handler;
 	delete shell;
 }
 
-void Console::stopLast(int signal){
-	//shell->stopLast();
-	std::cout << "kill" << std::endl;
+void Console::stopLast(int signal) {
+
+	pid_t pid = instance->shell->stopLast();
+
+	if (pid == 0) {
+		std::cout << std::endl << MES_PROGRAM_NOTERM << std::endl;
+	} else {
+		std::cout << std::endl << MES_PROGRAM_TERM_1 << pid << MES_PROGRAM_TERM_2 << std::endl;
+	}
 }
 
-bool Console::start(){
+bool Console::start() {
 
 	char *line = nullptr;
 
-	while(!handler->isTerminated()){
+	while (!handler->isTerminated()) {
 
 		// getting the current path
 		const char* cur_path = shell->getPath();
 
 		// checking if line is empty and if it is not it frees it and reallocates memory
-		if (line){
+		if (line) {
 			free(line);
 		}
 		// printing the prompt and getting the line
@@ -46,7 +56,7 @@ bool Console::start(){
 		line = readline(PROMPT2);
 
 		// adding it to history (you can use the arrows to navigate through history)
-		if (line && *line){
+		if (line && *line) {
 			add_history(line);
 		}
 

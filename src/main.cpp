@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
 
 	Console console;
 	console.start();
-	
+
 	return 0;
 }
