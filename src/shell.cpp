@@ -103,14 +103,18 @@ bool Shell::start(const char* program, char* const arguments[], const bool async
 	return true;
 }
 
-bool Shell::stopLast() {
+pid_t Shell::stopLast() {
 
 	if (this->child_pid == 0) {
 		// no child running
-		return false;
+		return 0;
 	}
+	
+	pid_t pid = this->child_pid;
 
 	kill(this->child_pid, SIGTERM);
 
-	return true;
+	this->child_pid = 0;
+	
+	return pid;
 }

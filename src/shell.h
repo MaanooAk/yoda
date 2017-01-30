@@ -52,8 +52,10 @@ public:
 
 	/**
 	 * Terminates the last program started with startSync()
+	 *
+	 * Returns the pid of the program stopped or 0 on failure.
 	 */
-	bool stopLast();
+	pid_t stopLast();
 
 protected:
 
