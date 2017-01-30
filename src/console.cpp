@@ -13,7 +13,7 @@ Console::Console(){
 
 	shell = new Shell();
 	handler = new Handler(shell);
-	
+
 	signal(SIGINT, stopLast);
 }
 
@@ -31,12 +31,12 @@ void Console::stopLast(int signal){
 bool Console::start(){
 
 	char *line = nullptr;
-	
+
 	while(!handler->isTerminated()){
 
 		// getting the current path
 		const char* cur_path = shell->getPath();
-		
+
 		// checking if line is empty and if it is not it frees it and reallocates memory
 		if (line){
 			free(line);
@@ -49,10 +49,10 @@ bool Console::start(){
 		if (line && *line){
 			add_history(line);
 		}
-		
+
 		// creating new Command object
 		Command command(line);
-		
+
 		// have handler object to execute the command
 		handler->execute(command);
 

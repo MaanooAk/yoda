@@ -36,7 +36,7 @@ protected:
 	Handler* handler;
 
 private:
-	
+
 	static void stopLast(int signal);
-	
+
 };
