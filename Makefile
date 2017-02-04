@@ -80,6 +80,10 @@ check:
 	@echo "Find trailling whitespace"
 	@grep -nr --color "[[:blank:]]$$" src/ || true
 
+.PHONY: todo
+todo:
+	@grep -nrE --color "TODO" src/ -A2 -B2
+
 # == HELP ==
 
 .PHONY: help
@@ -94,5 +98,6 @@ help:
 	@echo "  all          Build, run tests and run"
 	@echo "  deps         Install all the dependencies"
 	@echo "  check        Show code style errors"
+	@echo "  todo         Find all the TODO comments"
 	@echo "  help         Help"
 	@echo ""
