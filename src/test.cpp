@@ -10,6 +10,7 @@
 #include "command.h"
 #include "string.h"
 
+
 const char *cwd = getcwd(NULL, PATH_MAX+1);
 
 bool Test::perform() {

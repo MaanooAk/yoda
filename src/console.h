@@ -5,26 +5,35 @@
 
 
 /**
- * TODO(evaperon) write
+ * Handles the main app loop:
+ * - read line
+ * - create command
+ * - execute command
+ *
+ * Also handles the SIGINT signals.
  */
 class Console {
 public:
 
 	/**
-	 * constructor of the console
-	 * Creates a shell and a handler object
+	 * Constructs and initializes the console.
+	 *
+	 * Creates also a shell and a handler object.
 	 */
 	Console();
 
 	/**
-	 * destructor
-	 * frees (delete) the allocated memory of the shell and the handler
+	 * Deconstructs the Console.
+	 *
+	 * Deletes also the shell and handler.
 	 */
 	virtual ~Console();
 
 	/**
 	 * Starts running the console, contains the main loop of the program.
+	 *
 	 * When this function returns, the program should exit.
+	 *
 	 * Returns 0 if everything executed without errors, otherwise it returns 1
 	 */
 	bool start();

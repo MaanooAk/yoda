@@ -2,37 +2,37 @@
 
 
 /**
- * Gets a string and split into array.
+ * Contains the arguments of a command parsed from a string.
  *
- * TODO(asarlidou) fix and improve doc
+ * The array is null terminated.
  */
 class Command {
 public:
 
 	/**
-	 * TODO(asarlidou) write
+	 * Creates a command by parsing a string.
 	 */
 	Command(const char* text);
 
 	virtual ~Command();
 
 	/**
-	 * TODO(asarlidou) write
+	 * Returns the argument array.
 	 */
 	char* const* getArgs() const;
 
 	/**
-	 * TODO(asarlidou) write
+	 * Retruns the first argument.
 	 */
 	const char* getCommand() const;
 
 	/**
-	 * TODO(asarlidou) write
+	 * Retruns the last argument.
 	 */
 	const char* getLast() const;
 
 	/**
-	 * TODO(asarlidou) write
+	 * Retruns the number of arguments.
 	 */
 	int getArgsCount() const;
 

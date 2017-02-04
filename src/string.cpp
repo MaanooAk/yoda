@@ -2,6 +2,7 @@
 
 #include <cstring>
 
+
 void String::copy(char* dest, const char* src) {
 	strcpy(dest, src);
 }

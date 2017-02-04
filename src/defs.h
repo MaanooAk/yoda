@@ -4,8 +4,9 @@
 #define APP_NAME_LC "yoda"
 #define APP_NAME_UC "YODA"
 
-#define APP_VERSION "0.3"
+#define APP_VERSION "1.0"
 
+#define APP_WEBSITE "https://github.com/MaanooAk/yoda"
 
 // File paths
 #define PATH_PREFERENCES "./prefs.ini"

@@ -12,7 +12,6 @@ Handler::Handler(Shell *sh) {
 	this->terminated = false;
 }
 
-
 bool Handler::execute(const Command &c) {
 	if (c.getArgsCount() == 0) {
 		return true;
@@ -72,4 +71,5 @@ void Handler::exitYoda() {
 
 void Handler::help() {
 	std::cout << APP_NAME << " v" << APP_VERSION << std::endl;
+	std::cout << APP_WEBSITE << std::endl;
 }

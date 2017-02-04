@@ -5,19 +5,23 @@
 
 
 /**
- * TODO(jimboelessar) write
+ * Executes internal commands and passes external commands to the Shell.
+ *
+ * Keeps track if the app should terminate.
+ *
+ * Used by the Console.
  */
 class Handler {
 public:
 
 	/**
- 	 * Constructor
- 	 */
+	 * Constructs and initializes the handler with a given Shell.
+	 */
 	Handler(Shell *sh);
 
 	/**
 	 * Executes a command.
- 	 */
+	 */
 	bool execute(const Command &c);
 
 	/**
@@ -32,6 +36,8 @@ protected:
 	bool terminated;
 
 private:
+
+	// Internal commands
 
 	/**
 	 * Changes the active directory.

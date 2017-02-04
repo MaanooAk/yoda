@@ -9,6 +9,7 @@
 #include "defs.h"
 #include "command.h"
 
+
 // used from the SIGINT handler
 static Console* instance;
 

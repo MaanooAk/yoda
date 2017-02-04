@@ -7,7 +7,7 @@
 Command::Command(const char* text) {
 	// buffer variables
 	char buff[LINE_SIZE];
-	char* array[LINE_SIZE];
+	char* array[ARGS_SIZE];
 	// indexes
 	int i = 0, ibuff = 0, iarray = 0;
 	// inside quotes
@@ -62,7 +62,7 @@ Command::~Command() {
 	for (int i = 0; i < this->argc; i++) {
 		delete[] this->argv[i];
 	}
-	delete this->argv;
+	delete[] this->argv;
 }
 
 char* const* Command::getArgs() const {
