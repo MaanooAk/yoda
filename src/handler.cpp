@@ -62,7 +62,15 @@ bool Handler::isTerminated() {
 }
 
 bool Handler::cd(const char* path) {
-	return this->sh->setPath(path);
+	if (!this->sh->setPath(path)) {
+		std::cout << "No directory '" << path << "' found!" << std::endl;
+		return false;
+	}
+	int showpath = Preferences::main->getInt("showpath");
+	if (showpath == 0) {
+		pwd();
+	}
+	return true;
 }
 
 void Handler::pwd() {
@@ -81,6 +89,6 @@ void Handler::help() {
 
 void Handler::prefs() {
 	for (auto &i : Preferences::main->getKeys()) {
-		std::cout << i << "=" << Preferences::main->get(i) << std::endl;
+		std::cout << i << "=" << Preferences::main->get(i) << RESET << std::endl;
 	}
 }

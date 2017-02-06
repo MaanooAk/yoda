@@ -51,8 +51,9 @@
 #define MES_TEST_FALSE  RED "Test failed" RESET
 
 
-// TODO move to preferences
+// Preferences defaults
 #define PROMPT1 BOLDBLUE
 #define PROMPT2 RESET
 #define PROMPT3 "$ "
+#define SHOWPATH 1
 

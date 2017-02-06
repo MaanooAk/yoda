@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
 	Preferences::main->setDefault("prompt1", PROMPT1);
 	Preferences::main->setDefault("prompt2", PROMPT2);
 	Preferences::main->setDefault("prompt3", PROMPT3);
+	Preferences::main->setDefault("showpath", SHOWPATH);
 
 	Console console;
 	console.start();
