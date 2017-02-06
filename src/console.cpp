@@ -53,20 +53,20 @@ bool Console::start() {
 	while (!handler->isTerminated()) {
 
 		// checking if line is empty and if it is not it frees it and reallocates memory
-		
+
 		if (line) {
 			free(line);
 		}
-		
+
 		// printing the prompt
-		
+
 		std::cout << prompt1;
 		if (showpath == 1) {
 			const char* cur_path = shell->getPath();
 			std::cout << cur_path;
 		}
 		std::cout << prompt2;
-		
+
 		// getting the line
 		line = readline(prompt3.c_str());
 

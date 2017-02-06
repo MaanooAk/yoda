@@ -13,13 +13,12 @@ Handler::Handler(Shell *sh) {
 	this->terminated = false;
 }
 
-bool Handler::execute(const Command &c) {
+bool Handler::execute(Command &c) {
 	if (c.getArgsCount() == 0) {
 		return true;
 	}
 
 	const char* comm = c.getCommand();
-	char* const* args = c.getArgs();
 
 	if (strcmp(c.getCommand(), "cd") == 0) {
 		cd(c.getLast());
@@ -44,15 +43,13 @@ bool Handler::execute(const Command &c) {
 
 	if (strcmp(c.getLast(), "&") == 0) {
 
-		char** arguments = String::cloneLeading(args);
-
-		this->sh->startAsync(comm, arguments);
-		delete[] arguments;
+		c.removeLast();
+		this->sh->startAsync(comm, c.getArgs());
 
 		return true;
 	}
 	else {
-		this->sh->startSync(comm, args);
+		this->sh->startSync(comm, c.getArgs());
 		return true;
 	}
 }

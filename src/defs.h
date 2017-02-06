@@ -9,6 +9,7 @@
 #define APP_WEBSITE "https://github.com/MaanooAk/yoda"
 
 // File paths
+// TODO make it HOME_DIRECTORY/.yoda_prefs.ini
 #define PATH_PREFERENCES "./prefs.ini"
 
 

@@ -80,3 +80,17 @@ const char* Command::getLast() const {
 int Command::getArgsCount() const {
 	return this->argc;
 }
+
+void Command::removeFirst() {
+	delete[] this->argv[0];
+	for (int i = 1; i < this->argc; i++) {
+		this->argv[i - 1] = this->argv[i];
+	}
+	this->argc--;
+}
+
+void Command::removeLast() {
+	delete[] this->argv[this->argc - 1];
+	this->argv[this->argc - 1] = nullptr;
+	this->argc--;
+}

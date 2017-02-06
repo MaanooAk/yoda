@@ -36,6 +36,11 @@ public:
 	 */
 	int getArgsCount() const;
 
+
+	void removeFirst();
+
+	void removeLast();
+
 protected:
 
 	/**

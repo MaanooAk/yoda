@@ -76,7 +76,7 @@ public:
 class TestCommand02 : public Test {
 public:
 	TestCommand02() :
-		Test(false, "Command", "Parse arguments with multiple whitespace") {}
+		Test(true, "Command", "Parse arguments with multiple whitespace") {}
 
 	virtual const void* execute() override;
 	virtual bool assert(const void* result) override;
@@ -85,7 +85,7 @@ public:
 class TestCommand03 : public Test {
 public:
 	TestCommand03() :
-		Test(false, "Command", "Parse arguments with double quotes") {}
+		Test(true, "Command", "Parse arguments with double quotes") {}
 
 	virtual const void* execute() override;
 	virtual bool assert(const void* result) override;
@@ -94,7 +94,16 @@ public:
 class TestCommand04 : public Test {
 public:
 	TestCommand04() :
-		Test(false, "Command", "Parse empty line") {}
+		Test(true, "Command", "Parse empty line") {}
+
+	virtual const void* execute() override;
+	virtual bool assert(const void* result) override;
+};
+
+class TestCommand05 : public Test {
+public:
+	TestCommand05() :
+		Test(true, "Command", "Remove first and last") {}
 
 	virtual const void* execute() override;
 	virtual bool assert(const void* result) override;

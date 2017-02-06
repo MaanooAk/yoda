@@ -22,7 +22,7 @@ public:
 	/**
 	 * Executes a command.
 	 */
-	bool execute(const Command &c);
+	bool execute(Command &c);
 
 	/**
 	 * Returns true if there has been a command to close the shell;
