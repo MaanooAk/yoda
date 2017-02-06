@@ -1,6 +1,5 @@
 #include "handler.h"
 
-#include <cstring>
 #include <iostream>
 
 #include "defs.h"
@@ -20,28 +19,28 @@ bool Handler::execute(Command &c) {
 
 	const char* comm = c.getCommand();
 
-	if (strcmp(c.getCommand(), "cd") == 0) {
+	if (String::compare(c.getCommand(), "cd")) {
 		cd(c.getLast());
 		return true;
 	}
-	if (strcmp(c.getCommand(), "pwd") == 0) {
+	if (String::compare(c.getCommand(), "pwd")) {
 		pwd();
 		return true;
 	}
-	if (strcmp(c.getCommand(), "exit") == 0) {
+	if (String::compare(c.getCommand(), "exit")) {
 		exitYoda();
 		return true;
 	}
-	if (strcmp(c.getCommand(), "help") == 0) {
+	if (String::compare(c.getCommand(), "help") || String::compare(c.getCommand(), "yoda")) {
 		help();
 		return true;
 	}
-	if (strcmp(c.getCommand(), "prefs") == 0) {
+	if (String::compare(c.getCommand(), "prefs")) {
 		prefs();
 		return true;
 	}
 
-	if (strcmp(c.getLast(), "&") == 0) {
+	if (String::compare(c.getLast(), "&")) {
 
 		c.removeLast();
 		this->sh->startAsync(comm, c.getArgs());
@@ -60,7 +59,7 @@ bool Handler::isTerminated() {
 
 bool Handler::cd(const char* path) {
 	if (!this->sh->setPath(path)) {
-		std::cout << "No directory '" << path << "' found!" << std::endl;
+		std::cout << MES_DIRECTORY_NOT_FOUND_1 << path << MES_DIRECTORY_NOT_FOUND_2 << std::endl;
 		return false;
 	}
 	int showpath = Preferences::main->getInt("showpath");
