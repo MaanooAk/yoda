@@ -8,6 +8,7 @@
 
 #include "defs.h"
 #include "command.h"
+#include "preferences.h"
 
 
 // used from the SIGINT handler
@@ -43,6 +44,11 @@ bool Console::start() {
 
 	char *line = nullptr;
 
+	// TODO fix this, all return the same thing or something
+	const char *prompt1 = Preferences::main->get("prompt1").c_str();
+	const char *prompt2 = Preferences::main->get("prompt2").c_str();
+	const char *prompt3 = Preferences::main->get("prompt3").c_str();
+
 	while (!handler->isTerminated()) {
 
 		// getting the current path
@@ -53,8 +59,8 @@ bool Console::start() {
 			free(line);
 		}
 		// printing the prompt and getting the line
-		std::cout << PROMPT1 << cur_path;
-		line = readline(PROMPT2);
+		std::cout << prompt1 << cur_path << prompt2;
+		line = readline(prompt3);
 
 		// adding it to history (you can use the arrows to navigate through history)
 		if (line && *line) {

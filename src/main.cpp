@@ -4,6 +4,7 @@
 #include "defs.h"
 #include "test.h"
 #include "console.h"
+#include "preferences.h"
 
 
 int main(int argc, char *argv[]) {
@@ -16,6 +17,11 @@ int main(int argc, char *argv[]) {
 		bool result = tests.perform();
 		return result ? 0 : 1;
 	}
+
+	Preferences::main = new Preferences();
+	Preferences::main->setDefault("prompt1", PROMPT1);
+	Preferences::main->setDefault("prompt2", PROMPT2);
+	Preferences::main->setDefault("prompt3", PROMPT3);
 
 	Console console;
 	console.start();

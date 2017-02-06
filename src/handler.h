@@ -59,5 +59,5 @@ private:
 	 */
 	void help();
 
-
+	void prefs();
 };

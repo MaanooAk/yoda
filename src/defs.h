@@ -53,5 +53,6 @@
 
 // TODO move to preferences
 #define PROMPT1 BOLDBLUE
-#define PROMPT2 RESET "$ "
+#define PROMPT2 RESET
+#define PROMPT3 "$ "
 

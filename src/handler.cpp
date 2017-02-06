@@ -5,6 +5,7 @@
 
 #include "defs.h"
 #include "string.h"
+#include "preferences.h"
 
 
 Handler::Handler(Shell *sh) {
@@ -34,6 +35,10 @@ bool Handler::execute(const Command &c) {
 	}
 	if (strcmp(c.getCommand(), "help") == 0) {
 		help();
+		return true;
+	}
+	if (strcmp(c.getCommand(), "prefs") == 0) {
+		prefs();
 		return true;
 	}
 
@@ -72,4 +77,10 @@ void Handler::exitYoda() {
 void Handler::help() {
 	std::cout << APP_NAME << " v" << APP_VERSION << std::endl;
 	std::cout << APP_WEBSITE << std::endl;
+}
+
+void Handler::prefs() {
+	for (auto &i : Preferences::main->getKeys()) {
+		std::cout << i << "=" << Preferences::main->get(i) << std::endl;
+	}
 }
