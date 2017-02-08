@@ -22,6 +22,12 @@ public:
 	char* const* getArgs() const;
 
 	/**
+	 * Returns an argument given an index.
+	 * Negative indexes start from the end.
+	 */
+	const char* getArg(const int index) const;
+
+	/**
 	 * Retruns the first argument.
 	 */
 	const char* getCommand() const;

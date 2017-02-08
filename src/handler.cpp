@@ -5,6 +5,7 @@
 #include "defs.h"
 #include "string.h"
 #include "preferences.h"
+#include "aliases.h"
 
 
 Handler::Handler(Shell *sh) {
@@ -36,7 +37,11 @@ bool Handler::execute(Command &c) {
 		return true;
 	}
 	if (String::compare(c.getCommand(), "prefs")) {
-		prefs();
+		prefs(c);
+		return true;
+	}
+	if (String::compare(c.getCommand(), "alias")) {
+		alias(c);
 		return true;
 	}
 
@@ -83,8 +88,36 @@ void Handler::help() {
 	std::cout << APP_WEBSITE << std::endl;
 }
 
-void Handler::prefs() {
-	for (auto &i : Preferences::main->getKeys()) {
-		std::cout << i << "=" << Preferences::main->get(i) << RESET << std::endl;
+void Handler::prefs(Command &c) {
+	if (c.getArgsCount() == 2) {
+		const char* i = c.getArg(1);
+		// show one
+		if (Preferences::main->has(i)) {
+			std::cout << Preferences::main->get(i) << std::endl;
+		} else {
+			std::cout << MES_NOT_FOUND_1 << i << MES_NOT_FOUND_2 << std::endl;
+		}
+	} else {
+		// show all
+		for (auto &i : Preferences::main->getKeys()) {
+			std::cout << i << "=" << Preferences::main->get(i) << RESET << std::endl;
+		}
+	}
+}
+
+void Handler::alias(Command &c) {
+	if (c.getArgsCount() == 2) {
+		const char* i = c.getArg(1);
+		// show one
+		if (Aliases::main->has(i)) {
+			std::cout << Aliases::main->get(i) << std::endl;
+		} else {
+			std::cout << MES_NOT_FOUND_1 << i << MES_NOT_FOUND_2 << std::endl;
+		}
+	} else {
+		// show all
+		for (auto &i : Aliases::main->getKeys()) {
+			std::cout << i << "=" << Aliases::main->get(i) << RESET << std::endl;
+		}
 	}
 }

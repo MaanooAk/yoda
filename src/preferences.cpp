@@ -16,6 +16,10 @@ Preferences::Preferences(const std::string path) {
 	this->load();
 }
 
+bool Preferences::has(const std::string name) const {
+	return map.count(name) > 0;
+}
+
 std::string Preferences::get(const std::string name) const {
 	return map.at(name);
 }

@@ -10,7 +10,8 @@
 
 // File paths
 // TODO make it HOME_DIRECTORY/.yoda_prefs.ini
-#define PATH_PREFERENCES "./prefs.ini"
+#define PATH_PREFERENCES "./.yoda/prefs.ini"
+#define PATH_ALIAS "./.yoda/alias.ini"
 
 
 // Max values
@@ -39,6 +40,8 @@
 
 
 // Messages
+#define MES_NOT_FOUND_1            BOLDRED "[Failed]" RESET " No '"
+#define MES_NOT_FOUND_2            "' found!"
 #define MES_COMMAND_NOT_FOUND_1    BOLDRED "[Failed]" RESET " No command '"
 #define MES_COMMAND_NOT_FOUND_2    "' found!"
 #define MES_DIRECTORY_NOT_FOUND_1  BOLDRED "[Failed]" RESET " No directory '"

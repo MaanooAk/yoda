@@ -59,5 +59,7 @@ private:
 	 */
 	void help();
 
-	void prefs();
+	void prefs(Command &c);
+
+	void alias(Command &c);
 };

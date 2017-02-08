@@ -24,6 +24,11 @@ public:
 	Preferences(const std::string path);
 
 	/**
+	 * Check if a given name exists.
+	 */
+	bool has(const std::string name) const;
+
+	/**
 	 * Get a value based on a given name.
 	 */
 	std::string get(const std::string name) const;

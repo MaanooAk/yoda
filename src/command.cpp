@@ -69,6 +69,14 @@ char* const* Command::getArgs() const {
 	return this->argv;
 }
 
+const char* Command::getArg(const int index) const {
+	if (index >= 0) {
+		return this->argv[index];
+	} else {
+		return this->argv[this->argc - index];
+	}
+}
+
 const char* Command::getCommand() const {
 	return this->argv[0];
 }

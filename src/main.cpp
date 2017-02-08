@@ -5,6 +5,7 @@
 #include "test.h"
 #include "console.h"
 #include "preferences.h"
+#include "aliases.h"
 
 
 int main(int argc, char *argv[]) {
@@ -23,6 +24,11 @@ int main(int argc, char *argv[]) {
 	Preferences::main->setDefault("prompt2", PROMPT2);
 	Preferences::main->setDefault("prompt3", PROMPT3);
 	Preferences::main->setDefault("showpath", SHOWPATH);
+
+	Aliases::main = new Aliases();
+	Aliases::main->setDefault("ls", "ls --color");
+	Aliases::main->setDefault("grep", "grep --color");
+	Aliases::main->setDefault("hello", "echo hello");
 
 	Console console;
 	console.start();
