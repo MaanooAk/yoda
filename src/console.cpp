@@ -45,7 +45,6 @@ bool Console::start() {
 
 	char *line = nullptr;
 
-	// TODO fix this, all return the same thing or something
 	std::string prompt1 = Preferences::main->get("prompt1");
 	std::string prompt2 = Preferences::main->get("prompt2");
 	std::string prompt3 = Preferences::main->get("prompt3");

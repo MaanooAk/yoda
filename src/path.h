@@ -2,7 +2,9 @@
 
 #include <string>
 
-
+/**
+ * TODO make Path an actual class
+ */
 class Path {
 public:
 

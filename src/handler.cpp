@@ -19,7 +19,12 @@ bool Handler::execute(Command &c) {
 		return true;
 	}
 
-	const char* comm = c.getCommand();
+	if (Aliases::main->has(c.getCommand())) {
+		std::string prefix = Aliases::main->get(c.getCommand());
+		c.removeFirst();
+		Command *nc = new Command(prefix.c_str(), c);
+		c = *nc;
+	}
 
 	if (String::compare(c.getCommand(), "cd")) {
 		cd(c.getLast());
@@ -49,12 +54,12 @@ bool Handler::execute(Command &c) {
 	if (String::compare(c.getLast(), "&")) {
 
 		c.removeLast();
-		this->sh->startAsync(comm, c.getArgs());
+		this->sh->startAsync(c.getCommand(), c.getArgs());
 
 		return true;
 	}
 	else {
-		this->sh->startSync(comm, c.getArgs());
+		this->sh->startSync(c.getCommand(), c.getArgs());
 		return true;
 	}
 }

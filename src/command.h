@@ -14,6 +14,11 @@ public:
 	 */
 	Command(const char* text);
 
+	/**
+	 * Creates a command adding a prefix to a command.
+	 */
+	Command(const char* text, const Command & c);
+
 	virtual ~Command();
 
 	/**

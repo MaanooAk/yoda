@@ -57,6 +57,24 @@ Command::Command(const char* text) {
 
 }
 
+Command::Command(const char* text, const Command & c2) {
+	Command c1(text);
+
+	this->argc = c1.argc + c2.argc;
+	this->argv = new char*[this->argc + 1];
+
+	int i = 0;
+	for (int i1 = 0; i1 < c1.argc; i1++) {
+		this->argv[i] = String::clone(c1.argv[i1]);
+		i++;
+	}
+	for (int i2 = 0; i2 < c2.argc; i2++) {
+		this->argv[i] = String::clone(c2.argv[i2]);
+		i++;
+	}
+	this->argv[i] = nullptr;
+}
+
 Command::~Command() {
 	// delete the args
 	for (int i = 0; i < this->argc; i++) {
