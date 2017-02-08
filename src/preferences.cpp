@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "defs.h"
+#include "path.h"
 
 
 Preferences *Preferences::main;
@@ -11,7 +12,7 @@ Preferences::Preferences() :
 	Preferences(PATH_PREFERENCES) {}
 
 Preferences::Preferences(const std::string path) {
-	this->path = path;
+	this->path = Path::decompress(path);
 
 	this->load();
 }

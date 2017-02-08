@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "defs.h"
+#include "path.h"
 
 
 Aliases *Aliases::main;
@@ -11,7 +12,7 @@ Aliases::Aliases() :
 	Aliases(PATH_ALIAS) {}
 
 Aliases::Aliases(const std::string path) {
-	this->path = path;
+	this->path = Path::decompress(path);
 
 	this->load();
 }

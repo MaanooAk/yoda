@@ -9,6 +9,7 @@
 #include "defs.h"
 #include "command.h"
 #include "preferences.h"
+#include "path.h"
 
 
 // used from the SIGINT handler
@@ -62,8 +63,8 @@ bool Console::start() {
 
 		std::cout << prompt1;
 		if (showpath == 1) {
-			const char* cur_path = shell->getPath();
-			std::cout << cur_path;
+			std::string p(shell->getPath());
+			std::cout << Path::compress(p);
 		}
 		std::cout << prompt2;
 

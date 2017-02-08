@@ -8,10 +8,10 @@
 
 #define APP_WEBSITE "https://github.com/MaanooAk/yoda"
 
-// File paths
-// TODO make it HOME_DIRECTORY/.yoda_prefs.ini
-#define PATH_PREFERENCES "./.yoda/prefs.ini"
-#define PATH_ALIAS "./.yoda/alias.ini"
+// Paths
+#define PATH_LOCAL "~/.yoda"
+#define PATH_PREFERENCES "~/.yoda/prefs.ini"
+#define PATH_ALIAS "~/.yoda/alias.ini"
 
 
 // Max values

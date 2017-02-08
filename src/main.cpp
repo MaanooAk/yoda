@@ -6,11 +6,17 @@
 #include "console.h"
 #include "preferences.h"
 #include "aliases.h"
+#include "path.h"
 
 
 int main(int argc, char *argv[]) {
 
 	std::cout << APP_NAME << " v" << APP_VERSION << std::endl;
+
+	if (Path::makeDir(PATH_LOCAL)) {
+		// first time
+		std::cout << "Created directory " << PATH_LOCAL << " for local files" << std::endl;
+	}
 
 	if (argc == 2 && argv[1][0] == 't') {
 		// perfom all test

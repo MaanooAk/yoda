@@ -6,6 +6,7 @@
 #include "string.h"
 #include "preferences.h"
 #include "aliases.h"
+#include "path.h"
 
 
 Handler::Handler(Shell *sh) {
@@ -63,7 +64,7 @@ bool Handler::isTerminated() {
 }
 
 bool Handler::cd(const char* path) {
-	if (!this->sh->setPath(path)) {
+	if (!this->sh->setPath(Path::decompress(std::string(path)).c_str())) {
 		std::cout << MES_DIRECTORY_NOT_FOUND_1 << path << MES_DIRECTORY_NOT_FOUND_2 << std::endl;
 		return false;
 	}
