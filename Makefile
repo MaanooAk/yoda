@@ -54,9 +54,7 @@ test: build
 
 .PHONY: clean
 clean:
-	@echo "Remove $(COL_A)$(APP)$(COL) executable"
 	@rm -f $(APP)
-	@echo "Remove $(COL_A)$(PATH_BUILD)/$(COL) folder"
 	@rm -fr $(PATH_BUILD)
 	@echo "$(COL_B)- Cleaned -$(COL)"
 

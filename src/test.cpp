@@ -32,6 +32,7 @@ Tests::Tests() {
 	this->tests.push_back(new TestCommand02());
 	this->tests.push_back(new TestCommand03());
 	this->tests.push_back(new TestCommand04());
+	this->tests.push_back(new TestCommand05());
 }
 
 bool Tests::perform() {
@@ -172,3 +173,20 @@ bool TestCommand04::assert(const void* result) {
 	return a;
 }
 
+const void* TestCommand05::execute() {
+	char line[] = "ls build -a";
+	Command *c = new Command(line);
+	c->removeFirst();
+	c->removeLast();
+	return c;
+}
+
+bool TestCommand05::assert(const void* result) {
+	char s2[] = "build";
+	const char* const args[] = {s2, nullptr};
+
+	bool a = String::compare(args, ((Command*)result)->getArgs());
+
+	delete (Command*)result;
+	return a;
+}

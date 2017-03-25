@@ -8,8 +8,10 @@
 
 #define APP_WEBSITE "https://github.com/MaanooAk/yoda"
 
-// File paths
-#define PATH_PREFERENCES "./prefs.ini"
+// Paths
+#define PATH_LOCAL "~/.yoda"
+#define PATH_PREFERENCES "~/.yoda/prefs.ini"
+#define PATH_ALIAS "~/.yoda/alias.ini"
 
 
 // Max values
@@ -38,11 +40,15 @@
 
 
 // Messages
-#define MES_COMMAND_NOT_FOUND_1  "No command '"
-#define MES_COMMAND_NOT_FOUND_2  "' found!"
-#define MES_PROGRAM_TERM_1       BOLDYELLOW "[Interrupt]" RESET " Program with PID "
-#define MES_PROGRAM_TERM_2       " was terminated."
-#define MES_PROGRAM_NOTERM       BOLDYELLOW "[Interrupt]" RESET " No program is running!"
+#define MES_NOT_FOUND_1            BOLDRED "[Failed]" RESET " No '"
+#define MES_NOT_FOUND_2            "' found!"
+#define MES_COMMAND_NOT_FOUND_1    BOLDRED "[Failed]" RESET " No command '"
+#define MES_COMMAND_NOT_FOUND_2    "' found!"
+#define MES_DIRECTORY_NOT_FOUND_1  BOLDRED "[Failed]" RESET " No directory '"
+#define MES_DIRECTORY_NOT_FOUND_2  "' found!"
+#define MES_PROGRAM_TERM_1         BOLDYELLOW "[Interrupt]" RESET " Program with PID "
+#define MES_PROGRAM_TERM_2         " was terminated."
+#define MES_PROGRAM_NOTERM         BOLDYELLOW "[Interrupt]" RESET " No program is running!"
 
 
 // Testing messages
@@ -51,7 +57,9 @@
 #define MES_TEST_FALSE  RED "Test failed" RESET
 
 
-// TODO move to preferences
+// Preferences defaults
 #define PROMPT1 BOLDBLUE
-#define PROMPT2 RESET "$ "
+#define PROMPT2 RESET
+#define PROMPT3 "$ "
+#define SHOWPATH 1
 

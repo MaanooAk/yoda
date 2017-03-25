@@ -57,6 +57,24 @@ Command::Command(const char* text) {
 
 }
 
+Command::Command(const char* text, const Command & c2) {
+	Command c1(text);
+
+	this->argc = c1.argc + c2.argc;
+	this->argv = new char*[this->argc + 1];
+
+	int i = 0;
+	for (int i1 = 0; i1 < c1.argc; i1++) {
+		this->argv[i] = String::clone(c1.argv[i1]);
+		i++;
+	}
+	for (int i2 = 0; i2 < c2.argc; i2++) {
+		this->argv[i] = String::clone(c2.argv[i2]);
+		i++;
+	}
+	this->argv[i] = nullptr;
+}
+
 Command::~Command() {
 	// delete the args
 	for (int i = 0; i < this->argc; i++) {
@@ -69,6 +87,14 @@ char* const* Command::getArgs() const {
 	return this->argv;
 }
 
+const char* Command::getArg(const int index) const {
+	if (index >= 0) {
+		return this->argv[index];
+	} else {
+		return this->argv[this->argc - index];
+	}
+}
+
 const char* Command::getCommand() const {
 	return this->argv[0];
 }
@@ -79,4 +105,18 @@ const char* Command::getLast() const {
 
 int Command::getArgsCount() const {
 	return this->argc;
+}
+
+void Command::removeFirst() {
+	delete[] this->argv[0];
+	for (int i = 1; i < this->argc; i++) {
+		this->argv[i - 1] = this->argv[i];
+	}
+	this->argc--;
+}
+
+void Command::removeLast() {
+	delete[] this->argv[this->argc - 1];
+	this->argv[this->argc - 1] = nullptr;
+	this->argc--;
 }

@@ -14,12 +14,23 @@ public:
 	 */
 	Command(const char* text);
 
+	/**
+	 * Creates a command adding a prefix to a command.
+	 */
+	Command(const char* text, const Command & c);
+
 	virtual ~Command();
 
 	/**
 	 * Returns the argument array.
 	 */
 	char* const* getArgs() const;
+
+	/**
+	 * Returns an argument given an index.
+	 * Negative indexes start from the end.
+	 */
+	const char* getArg(const int index) const;
 
 	/**
 	 * Retruns the first argument.
@@ -35,6 +46,11 @@ public:
 	 * Retruns the number of arguments.
 	 */
 	int getArgsCount() const;
+
+
+	void removeFirst();
+
+	void removeLast();
 
 protected:
 
